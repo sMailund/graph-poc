@@ -67,7 +67,6 @@ async Task<List<MSGraphServicePrincipal>> GetServicePrincipals()
         MSGraphServicePrincipal user = new MSGraphServicePrincipal();
         user.appId = u.AppId;
         user.displayName = u.DisplayName;
-        user.assignments = u.AppRoleAssignments.ToList();
 
         msGraphUsers.Add(user);
     }
