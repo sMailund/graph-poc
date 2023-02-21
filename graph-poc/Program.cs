@@ -56,6 +56,24 @@ async Task<List<MSGraphUser>> GetUsers()
     return msGraphUsers;
 }
 
+async Task<List<MSGraphServicePrincipal>> GetApplication()
+{
+    var graphServiceClient = GraphServiceClient1();
+
+    var msGraphUsers = new List<MSGraphServicePrincipal>();
+    var users = await graphServiceClient.Applications.Request().GetAsync();
+    foreach (var u in users)
+    {
+        MSGraphServicePrincipal user = new MSGraphServicePrincipal();
+        user.appId = u.AppId;
+        user.displayName = u.DisplayName;
+
+        msGraphUsers.Add(user);
+    }
+
+    return msGraphUsers;
+}
+
 async Task<List<MSGraphServicePrincipal>> GetServicePrincipals()
 {
     var graphServiceClient = GraphServiceClient1();
@@ -78,5 +96,6 @@ async Task<List<MSGraphServicePrincipal>> GetServicePrincipals()
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/users", GetUsers);
 app.MapGet("/principals", GetServicePrincipals);
+app.MapGet("/application", GetApplication);
 
 app.Run();
