@@ -49,7 +49,6 @@ async Task<List<MSGraphUser>> GetUsers()
         user.displayName = u.DisplayName;
         user.mail = u.Mail;
         user.jobTitle = u.JobTitle;
-        user.assignments = u.AppRoleAssignments.ToList();
 
         msGraphUsers.Add(user);
     }
