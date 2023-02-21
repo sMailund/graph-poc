@@ -1,3 +1,5 @@
+using Microsoft.Graph;
+
 namespace graph_poc;
 
 public class MSGraphUser
@@ -6,4 +8,5 @@ public class MSGraphUser
     public string displayName { get; set; }
     public string mail { get; set; }
     public string jobTitle { get; set; }
+    public List<AppRoleAssignment> assignments { get; set; }
 }
